@@ -1,3 +1,8 @@
+
+# Created by https://www.gitignore.io/api/unity
+# Edit at https://www.gitignore.io/?templates=unity
+
+### Unity ###
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
@@ -10,6 +15,9 @@
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # [Aa]ssets/AssetStoreTools*
+
+# TextMesh Pro files
+[Aa]ssets/TextMesh*Pro/
 
 # Visual Studio cache directory
 .vs/
@@ -49,3 +57,6 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
+
+
+# End of https://www.gitignore.io/api/unity
