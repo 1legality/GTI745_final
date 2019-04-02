@@ -10,14 +10,26 @@ public class PlayerEyes : MonoBehaviour
             _playerEyes = this;
     }
 
+    // TODO Replace with TOBI LOCATION
+    private static Vector2 GetEyesLocation()
+    {
+        return Input.mousePosition;
+    }
+
     public static Vector3 GetWorldLocation()
     {
-        // TODO Replace with TOBI LOCATION
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(GetEyesLocation());
 
         RaycastHit hit;
         return Physics.Raycast(ray, out hit)
             ? hit.point
             : Vector3.zero;
+    }
+
+    public static Vector3 GetWorldLocationOnPlane()
+    {
+        var value = Camera.main.ScreenToWorldPoint(new Vector3(GetEyesLocation().x,  GetEyesLocation().y , Camera.main.nearClipPlane));
+        Debug.Log(value);
+        return value;
     }
 }
