@@ -23,7 +23,7 @@ public class GazePlotter : MonoBehaviour
 	[Range(0.1f, 1.0f), Tooltip("How heavy filtering to apply to gaze point bubble movements. 0.1f is most responsive, 1.0f is least responsive.")]
 	public float FilterSmoothingFactor = 0.15f;
 
-	private GazePoint _lastGazePoint = GazePoint.Invalid;
+	public GazePoint _lastGazePoint = GazePoint.Invalid;
 
 	// Members used for the gaze point cloud:
 	private const float MaxVisibleDurationInSeconds = 0.5f;
