@@ -14,9 +14,14 @@ public class NPCLookAt: MonoBehaviour
     {
         _eyes.ForEach(eye =>
         {
-            var lookingDirection = (PlayerEyes.GetWorldLocationOnPlane() * Vector3.Distance(Camera.main.transform.position, transform.position) - eye.transform.position);
-            Debug.DrawLine(eye.transform.position, PlayerEyes.GetWorldLocationOnPlane(), Color.red);
+            var lookingDirection = PlayerEyes.GetWorldLocation() - transform.position;
             eye.transform.rotation =  Quaternion.LookRotation(lookingDirection);
+            //eye.transform.localEulerAngles = new Vector3(
+            //    Mathf.Clamp(eye.transform.localEulerAngles.x, -50,50),
+            //    Mathf.Clamp(eye.transform.localEulerAngles.y, -50, 50),
+            //    0
+            //);
+
         });
     }
 }
