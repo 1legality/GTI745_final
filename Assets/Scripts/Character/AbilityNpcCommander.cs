@@ -14,10 +14,9 @@ namespace Assets.Scripts.Character
         [SerializeField] private float _fillAmountSpeed = 8.0f;
 
         public override Abilities Ability => Abilities.NPC_Commander;
-
-        private NPCCommand _currentNpcControlled = null;
-        private NPCCommand _currentCommandInProgress = null;
-        private float _currentFilledAmount = 0.0f;
+        
+        private NPCCommandable _commandInProgress = null;
+        private float _progressAmount = 0.0f;
 
         private void Update()
         {
@@ -28,29 +27,24 @@ namespace Assets.Scripts.Character
                 _targetAimObject.transform.position = hit.point + hit.normal * 0.001f;
                 _targetAimObject.transform.rotation = Quaternion.LookRotation(hit.normal);
 
-                var command = hit.collider.GetComponentInParent<NPCCommand>();
+                var command = hit.collider.GetComponentInParent<NPCCommandable>();
 
-                if (_currentCommandInProgress && command != _currentCommandInProgress)
+                if (_commandInProgress && command != _commandInProgress)
                 {
-                    _currentCommandInProgress.SetFillAmount(0.0f);
-                    _currentFilledAmount = 0.0f;
+                    _commandInProgress.SetFillAmount(0.0f);
+                    _progressAmount = 0.0f;
                 }
 
                 if (command)
                 {
-                    _currentFilledAmount = Mathf.MoveTowards(_currentFilledAmount, 1.0f, Time.deltaTime * _fillAmountSpeed);
-                    command.SetFillAmount(_currentFilledAmount);
-                    _currentCommandInProgress = command;
+                    _progressAmount = Mathf.MoveTowards(_progressAmount, 1.0f, Time.deltaTime * _fillAmountSpeed);
+                    command.SetFillAmount(_progressAmount);
+                    _commandInProgress = command;
                 }
 
-                if (Math.Abs(_currentFilledAmount - 1.0f) < float.Epsilon)
-                {
-                    _currentNpcControlled = command;
-                    _currentFilledAmount = 0.0f;
-                    _currentNpcControlled.Command();
-                }
+                if (Math.Abs(_progressAmount - 1.0f) < float.Epsilon)
+                    CommandManager.Instance.CompleteProgress(_commandInProgress);
             }
         }
-        
     }
 }
