@@ -11,6 +11,9 @@ public class PlayerEyes : MonoBehaviour
     private static float VisualizationDistance = 10f;
 
     private static Vector3 oldPostion = new Vector3();
+
+    public static bool UseMouseAsInput { get; set; }
+
     private void Awake()
     {
         if (!_playerEyes)
@@ -20,6 +23,8 @@ public class PlayerEyes : MonoBehaviour
     // TODO Replace with TOBI LOCATION
     private static Vector2 GetEyesLocation()
     {
+        if (UseMouseAsInput)
+            return Input.mousePosition;
         /*GazePoint gazePoint = TobiiAPI.GetGazePoint();
 
         Vector3 gazeOnScreen = gazePoint.Screen;
