@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class CharacterShooter: MonoBehaviour
+public class AbilityGun : AbilityBase
 {
-    [SerializeField] private Transform _fireSocket;
+    public override Abilities Ability => Abilities.Gun;
+
+    [SerializeField] private Transform _fireSocket = null;
     [SerializeField] private Projectile _projectilePrefab = null;
     [SerializeField] private float _fireRate = 0.3f;
     [SerializeField] private float _fireLaunchSpeed = 5.0f;
@@ -14,11 +16,16 @@ public class CharacterShooter: MonoBehaviour
     private List<Projectile> _projectiles = new List<Projectile>();
 
     private int _currentIndex = 0;
+    private float _lastFireTime = 0.0f;
 
     private void Start()
     {
         InitMagazine();
-        StartCoroutine(Fire());
+    }
+
+    private void Update()
+    {
+        FireProjectile();
     }
 
     private void InitMagazine()
@@ -33,25 +40,25 @@ public class CharacterShooter: MonoBehaviour
         }
     }
 
-    private IEnumerator Fire()
+    private void FireProjectile()
     {
-        while (true)
-        {
-            var projectile = _projectiles.ElementAt(_currentIndex++);
+        if (Time.time - _lastFireTime < _fireRate)
+            return;
 
-            if (_currentIndex >= _projectiles.Count)
-                _currentIndex = 0;
+        var projectile = _projectiles.ElementAt(_currentIndex++);
+
+        if (_currentIndex >= _projectiles.Count)
+            _currentIndex = 0;
 
 
-            projectile.transform.position = _fireSocket.position;
-            projectile.gameObject.SetActive(true);
+        projectile.transform.position = _fireSocket.position;
+        projectile.gameObject.SetActive(true);
 
-            var eyesPosition = PlayerEyes.GetWorldLocation();
-            var direction = eyesPosition - transform.position;
+        var eyesPosition = PlayerEyes.GetWorldLocation();
+        var direction = eyesPosition - transform.position;
 
-            projectile.Fire(direction.normalized * _fireLaunchSpeed);
+        projectile.Fire(direction.normalized * _fireLaunchSpeed);
 
-            yield return new WaitForSeconds(_fireRate);
-        }
+        _lastFireTime = Time.time;
     }
 }

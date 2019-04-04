@@ -7,10 +7,8 @@ public class PlayerEyes : MonoBehaviour
 
     private static Vector3 _historicPoint = new Vector3();
 
-    private static float FilterSmoothingFactor = 0.15f;
-    private static float VisualizationDistance = 10f;
-
-    private static Vector3 oldPostion = new Vector3();
+    //private static float FilterSmoothingFactor = 0.15f;
+    //private static float VisualizationDistance = 10f;
 
     public static bool UseMouseAsInput { get; set; }
 
@@ -21,7 +19,7 @@ public class PlayerEyes : MonoBehaviour
     }
 
     // TODO Replace with TOBI LOCATION
-    private static Vector2 GetEyesLocation()
+    public static Vector2 GetEyesLocation()
     {
         if (UseMouseAsInput)
             return Input.mousePosition;

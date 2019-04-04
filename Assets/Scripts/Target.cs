@@ -24,12 +24,6 @@ public class Target : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         _targetLife--;
-
-        if (_currentLife <= 0.001f)
-        {
-            Instantiate(_explosion, transform.position, transform.rotation);
-            Destroy(gameObject);
-        }
     }
 
     void Update()
@@ -39,6 +33,16 @@ public class Target : MonoBehaviour
         lifeRect.width = (_currentLife / _initialLife) * _lifeWidth;
         _lifeImage.rectTransform.sizeDelta = lifeRect.size;
         _lifeImage.rectTransform.anchoredPosition = new Vector2(lifeRect.width/2.0f, 0.0f);
-        //_lifeImage.rectTransform.rect = lifeRect
+        
+        if (_currentLife <= 0.001f)
+        {
+            Instantiate(_explosion, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
+    }
+
+    public void Damage(float amount)
+    {
+        _targetLife -= amount;
     }
 }

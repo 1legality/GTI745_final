@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class NPCLookAt: MonoBehaviour
 {
-    [SerializeField] private List<GameObject> _eyes;
-    [SerializeField] private Vector2 _yawLimit;
-    [SerializeField] private Vector2 _pitchLimit;
+    [SerializeField] private List<GameObject> _eyes = null;
+    [SerializeField] private Vector2 _yawLimit = Vector2.zero;
+    [SerializeField] private Vector2 _pitchLimit = Vector2.zero;
 
     private void Update()
     {
