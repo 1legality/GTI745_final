@@ -5,6 +5,7 @@ using UnityEngine;
 public class Puzzle2: MonoBehaviour
 {
     [SerializeField] private List<PuzzleElement2> _puzzleElements;
+    [SerializeField] private float _wallSpeed = 20.0f;
 
     private void Awake()
     {
@@ -26,6 +27,22 @@ public class Puzzle2: MonoBehaviour
 
     private IEnumerator Animate()
     {
-        yield return null;
+        float target = -10.5f;
+        
+        _puzzleElements.ForEach(p =>
+        {
+            p.Completed = true;
+            p.ClearConnection();
+        });
+
+        while (transform.localPosition.y > target)
+        {
+            var pos = transform.localPosition;
+            pos.y = Mathf.MoveTowards(pos.y, target, Time.deltaTime * _wallSpeed);
+            transform.localPosition = pos;
+            yield return null;
+        }
+        
+        
     }
 }

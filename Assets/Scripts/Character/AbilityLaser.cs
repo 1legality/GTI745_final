@@ -42,7 +42,7 @@ public class AbilityLaser: AbilityBase
                 _previousElement.ConnectTo(puzzleElement);
                 _previousElement = puzzleElement;
             }
-            if (_previousElement && !_previousElement.ConnectionSuccess)
+            if (_previousElement && !_previousElement.ConnectionSuccess && !_previousElement.Completed)
             {
                 _previousElement.UpdateEndLine(hit.point);
             }

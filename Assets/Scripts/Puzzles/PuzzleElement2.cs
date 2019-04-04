@@ -10,6 +10,7 @@ public class PuzzleElement2: MonoBehaviour
 
     public bool ConnectionSuccess => _nextElement == _connectedElement;
     public bool ConnectionFailed => _connectedElement && _nextElement != _connectedElement;
+    public bool Completed { get; set; }
 
     public event Action<PuzzleElement2> Connected;
 
