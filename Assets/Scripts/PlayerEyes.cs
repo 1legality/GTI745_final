@@ -23,29 +23,6 @@ public class PlayerEyes : MonoBehaviour
     {
         if (UseMouseAsInput)
             return Input.mousePosition;
-        /*GazePoint gazePoint = TobiiAPI.GetGazePoint();
-
-        Vector3 gazeOnScreen = gazePoint.Screen;
-
-        // gazeOnScreen += (oldPostion * VisualizationDistance);
-        Vector3 gazePointInWorld = Camera.main.ScreenToWorldPoint(gazeOnScreen);
-
-        _historicPoint = gazePointInWorld;
-
-        var smoothedPoint = new Vector3(
-            gazePointInWorld.x * (1.0f - FilterSmoothingFactor) + _historicPoint.x * FilterSmoothingFactor,
-            gazePointInWorld.y * (1.0f - FilterSmoothingFactor) + _historicPoint.y * FilterSmoothingFactor,
-            gazePointInWorld.z * (1.0f - FilterSmoothingFactor) + _historicPoint.z * FilterSmoothingFactor);
-
-        oldPostion = smoothedPoint;
-
-        Vector2 position = smoothedPoint;
-
-        return position;*/
-
-        //transform.position = Smoothify(gazePointInWorld);
-
-        //return Input.mousePosition;
 
         if(GameObject.Find("GazePlot"))
         {
@@ -56,6 +33,27 @@ public class PlayerEyes : MonoBehaviour
         }
 
         if(GameObject.Find("PointCloudSprite0"))
+        {
+            return GameObject.Find("PointCloudSprite0").transform.position;
+        }
+
+        return _historicPoint;
+    }
+
+    public static Vector3 GetEyesWorldLocation()
+    {
+        if (UseMouseAsInput)
+            return Input.mousePosition;
+
+        if (GameObject.Find("GazePlot"))
+        {
+            GameObject gazePlot = GameObject.Find("GazePlot");
+            GazePlotter gaszePlotter = gazePlot.GetComponent<GazePlotter>();
+
+            return gaszePlotter._lastGazePoint.Screen;
+        }
+
+        if (GameObject.Find("PointCloudSprite0"))
         {
             return GameObject.Find("PointCloudSprite0").transform.position;
         }

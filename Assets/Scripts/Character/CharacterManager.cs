@@ -44,6 +44,9 @@ public class CharacterManager : MonoBehaviour
             case Abilities.NPC_Commander:
                 toEnable = _abilities.FirstOrDefault(a => a.Ability == Abilities.NPC_Commander);
                 break;
+            case Abilities.Movement:
+                toEnable = _abilities.FirstOrDefault(a => a.Ability == Abilities.Movement);
+                break;
         }
 
         if (toEnable != null)
