@@ -3687,6 +3687,7 @@ MonoBehaviour:
   - {fileID: 1852539371}
   - {fileID: 1194539058}
   - {fileID: 85270226}
+  _wallSpeed: 20
 --- !u!1 &1306998007
 GameObject:
   m_ObjectHideFlags: 0
@@ -4032,7 +4033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c20a95511eab7a34dbe4727970e8cc8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _useMouseAsInput: 0
+  _useMouseAsInput: 1
 --- !u!4 &1441023618
 Transform:
   m_ObjectHideFlags: 0
