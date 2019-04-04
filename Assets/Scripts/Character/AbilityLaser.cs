@@ -12,6 +12,7 @@ public class AbilityLaser: AbilityBase
 
     private LineRenderer _lineRenderer = null;
     private ParticleSystem _particleSystem = null;
+    private PuzzleElement2 _previousElement = null;
 
     private void Awake()
     {
@@ -31,8 +32,22 @@ public class AbilityLaser: AbilityBase
         if (Physics.Raycast(new Ray(_fireSocket.transform.position, direction), out hit))
         {
             _particleSystem.transform.rotation = Quaternion.LookRotation(hit.normal);
-            hit.collider?.GetComponent<Target>()?.Damage(_damagePerSecond * Time.deltaTime);
+
+            var puzzleElement = hit.collider.GetComponent<PuzzleElement2>();
+            if (puzzleElement && !_previousElement)
+                _previousElement = puzzleElement;
+
+            if (puzzleElement && _previousElement && puzzleElement != _previousElement)
+            {
+                _previousElement.ConnectTo(puzzleElement);
+                _previousElement = puzzleElement;
+            }
+            if (_previousElement && !_previousElement.ConnectionSuccess)
+            {
+                _previousElement.UpdateEndLine(hit.point);
+            }
         }
+
     }
 
     public override void OnDeactivated()
