@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +14,8 @@ public class Target : MonoBehaviour
     private float _targetLife;
     private float _currentLife;
     private float _lifeWidth;
+
+    public event Action Explode;
 
     private void Awake()
     {
@@ -36,6 +39,7 @@ public class Target : MonoBehaviour
         
         if (_currentLife <= 0.001f)
         {
+            Explode?.Invoke();
             Instantiate(_explosion, transform.position, transform.rotation);
             Destroy(gameObject);
         }
