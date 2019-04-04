@@ -21,7 +21,10 @@ public class NPCLookAt: MonoBehaviour
 
             var euler = eye.transform.localEulerAngles;
             eye.transform.localEulerAngles = new Vector3(
-                Mathf.Clamp(euler.x, _pitchLimit.x, _yawLimit.y),
+                //euler.x > 200
+                //    ? Mathf.Clamp(euler.x, 360 + _pitchLimit.x, 360 + _pitchLimit.x)
+                //    : Mathf.Clamp(euler.x, _pitchLimit.x, _pitchLimit.x),
+                Mathf.Clamp(euler.x, _pitchLimit.x, _pitchLimit.y),
                 euler.y > 200
                     ? Mathf.Clamp(euler.y, 360 + _yawLimit.x, 360 +_yawLimit.y)
                     : Mathf.Clamp(euler.y, _yawLimit.x, _yawLimit.y),

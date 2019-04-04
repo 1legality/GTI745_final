@@ -3,5 +3,6 @@
     None,
     Gun,
     Laser,
-    NPC_Commander
+    NPC_Commander,
+    Movement
 }
