@@ -11,6 +11,8 @@ public class NPCPressurePlate : NPCCommandable
     private int _overlappingActorCount = 0;
     private Coroutine _coroutine = null;
 
+    public bool Pressed => _overlappingActorCount > 0;
+
     private void Awake()
     {
         base.Awake();
