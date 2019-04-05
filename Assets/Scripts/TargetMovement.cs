@@ -28,7 +28,7 @@ public class TargetMovement: MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Handles.color = Color.red;
-        Handles.DrawLine(transform.position, transform.position + _movement);
+        //Handles.color = Color.red;
+        //Handles.DrawLine(transform.position, transform.position + _movement);
     }
 }

@@ -45,17 +45,10 @@ public class PlayerEyes : MonoBehaviour
         if (UseMouseAsInput)
             return Input.mousePosition;
 
-        if (GameObject.Find("GazePlot"))
-        {
-            GameObject gazePlot = GameObject.Find("GazePlot");
-            GazePlotter gaszePlotter = gazePlot.GetComponent<GazePlotter>();
-
-            return gaszePlotter._lastGazePoint.Screen;
-        }
-
         if (GameObject.Find("PointCloudSprite0"))
         {
-            return GameObject.Find("PointCloudSprite0").transform.position;
+            Camera cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>(); ;
+            return cam.WorldToScreenPoint(GameObject.Find("PointCloudSprite0").transform.position);
         }
 
         return _historicPoint;
