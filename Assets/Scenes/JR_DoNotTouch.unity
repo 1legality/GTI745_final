@@ -614,7 +614,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 109181546}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -30.74}
+  m_LocalPosition: {x: 0, y: 0, z: -30.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 273423724}
@@ -635,8 +635,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cff0079c08f93634191414eda1181986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targets: []
-  _door: {fileID: 0}
+  _targets:
+  - {fileID: 1336387577}
+  - {fileID: 371884286}
+  _door: {fileID: 1125245151}
   _doorSpeed: 0.05
 --- !u!1 &189279716
 GameObject:
@@ -1163,6 +1165,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &371884286 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114560467448267156, guid: 7ce9d2a49f61efa4ea55c4d209f5ee51,
+    type: 3}
+  m_PrefabInstance: {fileID: 273423723}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e31cc986085e2841865d9ef01524b5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &420136023
 GameObject:
   m_ObjectHideFlags: 0
@@ -2774,8 +2788,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 59.5}
-  m_SizeDelta: {x: 150, y: 150}
+  m_AnchoredPosition: {x: 0, y: 5.9}
+  m_SizeDelta: {x: 500, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &916873324
 MonoBehaviour:
@@ -3723,7 +3737,7 @@ GameObject:
   - component: {fileID: 1125245154}
   - component: {fileID: 1125245153}
   m_Layer: 0
-  m_Name: Cube (3)
+  m_Name: Door3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4182,7 +4196,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5b635158932ac741bcd63b4c23192b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _puzzleElements: []
+  _puzzleElements:
+  - {fileID: 494083763}
+  - {fileID: 986966003}
+  - {fileID: 1024983795}
+  - {fileID: 26915270}
+  - {fileID: 1491335449}
+  - {fileID: 1852539371}
+  - {fileID: 1194539058}
+  - {fileID: 85270226}
   _wallSpeed: 20
 --- !u!1 &1306998007
 GameObject:
@@ -4448,6 +4470,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1315092807}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1336387577 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114560467448267156, guid: 7ce9d2a49f61efa4ea55c4d209f5ee51,
+    type: 3}
+  m_PrefabInstance: {fileID: 1310805800}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e31cc986085e2841865d9ef01524b5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1360361643
 GameObject:
   m_ObjectHideFlags: 0
