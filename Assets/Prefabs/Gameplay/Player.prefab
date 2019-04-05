@@ -755,6 +755,8 @@ MonoBehaviour:
   _movementSpeed: 5
   _rotationSpeed: 25
   playerTransform: {fileID: 0}
+  _minThreshold: 200
+  _maxThreshold: 200
 --- !u!1 &2832325592532399038
 GameObject:
   m_ObjectHideFlags: 0
