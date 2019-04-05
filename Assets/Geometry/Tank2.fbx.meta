@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a998d3a30e1ce99428c6b9e933216a12
+guid: 4571c82fd55b24a4ba6516d961fd6c8a
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -17,8 +17,8 @@ ModelImporter:
     3300002: //RootNode
     3300004: Tower
     4300000: Body
-    4300002: Barrel
-    4300004: Tower
+    4300002: Tower
+    4300004: Barrel
   externalObjects: {}
   materials:
     importMaterials: 1
