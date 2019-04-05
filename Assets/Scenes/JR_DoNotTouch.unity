@@ -2823,7 +2823,7 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
+    m_LineSpacing: 2
   m_Text: 5
 --- !u!222 &916873325
 CanvasRenderer:
@@ -5026,7 +5026,7 @@ MonoBehaviour:
   _AudioSource: {fileID: 1844612956}
   _AudioClipGood: {fileID: 8300000, guid: 330f83435b271a34fb81a4bfc3ee06c9, type: 3}
   _AudioClipBad: {fileID: 8300000, guid: f51eddb55ea138043be7c0db4387a59a, type: 3}
-  _TimerLimit: 300
+  _TimerLimit: 10
 --- !u!82 &1844612956
 AudioSource:
   m_ObjectHideFlags: 0

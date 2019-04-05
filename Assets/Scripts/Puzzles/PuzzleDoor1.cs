@@ -23,6 +23,14 @@ public class PuzzleDoor1: MonoBehaviour
     {
         _openingDoor = true;
 
+        if (_hasPlaySound == false)
+        {
+            GameLoop gameLoop = GameObject.Find("GameLoop").GetComponent<GameLoop>();
+            gameLoop.PlayGoodSound();
+
+            _hasPlaySound = true;
+        }
+
         while (Math.Abs(_door.transform.localEulerAngles.y - _yawTarget) > float.Epsilon)
         {
             var localRot = _door.transform.localEulerAngles;
@@ -30,14 +38,6 @@ public class PuzzleDoor1: MonoBehaviour
             _door.transform.localEulerAngles = localRot;
 
             yield return null;
-        }
-
-        if(_hasPlaySound == false)
-        {
-            GameLoop gameLoop = GameObject.Find("GameLoop").GetComponent<GameLoop>();
-            gameLoop.PlayGoodSound();
-
-            _hasPlaySound = true;
         }
     }
 }

@@ -34,14 +34,6 @@ public class Puzzle3: MonoBehaviour
     {
         float target = 0.5f;
 
-        while (_door.transform.localPosition.y < target)
-        {
-            var pos = _door.transform.localPosition;
-            pos.y = Mathf.MoveTowards(pos.y, target, Time.deltaTime * _doorSpeed);
-            _door.transform.localPosition = pos;
-            yield return null;
-        }
-
         if (_hasPlaySound == false)
         {
             GameLoop gameLoop = GameObject.Find("GameLoop").GetComponent<GameLoop>();
@@ -49,5 +41,13 @@ public class Puzzle3: MonoBehaviour
 
             _hasPlaySound = true;
         }
+
+        while (_door.transform.localPosition.y < target)
+        {
+            var pos = _door.transform.localPosition;
+            pos.y = Mathf.MoveTowards(pos.y, target, Time.deltaTime * _doorSpeed);
+            _door.transform.localPosition = pos;
+            yield return null;
+        }   
     }
 }

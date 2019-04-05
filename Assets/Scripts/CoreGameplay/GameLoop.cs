@@ -46,6 +46,7 @@ public class GameLoop : MonoBehaviour
     
     public void OnGameWin()
     {
+        PlayGoodSound();
         _GameText.text = "You win \n Your time is : " + UnityEngine.Mathf.Round((_TimerLimit - _CurrentTime)) + " seconds";
         _GameText.gameObject.SetActive(true);
         Time.timeScale = 0;
@@ -53,6 +54,7 @@ public class GameLoop : MonoBehaviour
 
     public void GameOver()
     {
+        PlayBasSound();
         _GameText.text = "You lose";
         _GameText.gameObject.SetActive(true);
         Time.timeScale = 0;
