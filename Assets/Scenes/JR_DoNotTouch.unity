@@ -5026,7 +5026,7 @@ MonoBehaviour:
   _AudioSource: {fileID: 1844612956}
   _AudioClipGood: {fileID: 8300000, guid: 330f83435b271a34fb81a4bfc3ee06c9, type: 3}
   _AudioClipBad: {fileID: 8300000, guid: f51eddb55ea138043be7c0db4387a59a, type: 3}
-  _TimerLimit: 10
+  _TimerLimit: 300
 --- !u!82 &1844612956
 AudioSource:
   m_ObjectHideFlags: 0
