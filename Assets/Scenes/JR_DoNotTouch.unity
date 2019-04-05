@@ -913,6 +913,7 @@ GameObject:
   - component: {fileID: 237886264}
   - component: {fileID: 237886263}
   - component: {fileID: 237886262}
+  - component: {fileID: 237886266}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -992,6 +993,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &237886266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237886261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cf0da41d5c33224d8f24d995a55d535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &273423723
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2303,7 +2316,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &764320226
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4599,7 +4612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c20a95511eab7a34dbe4727970e8cc8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _useMouseAsInput: 0
+  _useMouseAsInput: 1
 --- !u!4 &1441023618
 Transform:
   m_ObjectHideFlags: 0
@@ -4975,7 +4988,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _GameText: {fileID: 916873324}
   _TimerText: {fileID: 2007190277}
-  _TimerLimit: 60
+  _TimerLimit: 300
 --- !u!1 &1852539370
 GameObject:
   m_ObjectHideFlags: 0

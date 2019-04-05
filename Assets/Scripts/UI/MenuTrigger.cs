@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Image))]
@@ -20,13 +21,7 @@ public class MenuTrigger : MonoBehaviour
 
     private void Start()
     {
-        // AbilityManager.Instance.AbilityChanged += AbilityChanged;
         _ButtonText.text = _ButtonTextValue;
-    }
-
-    private void AbilityChanged(Abilities ability)
-    {
-        //StartCoroutine(AnimateActivation(ability == _ability ? 1.0f : 0.0f));
     }
 
     private void Update()
@@ -34,6 +29,18 @@ public class MenuTrigger : MonoBehaviour
         _loading.fillAmount = AreEyesOver()
             ? Mathf.MoveTowards(_loading.fillAmount, 1.0f, Time.deltaTime * _activationSpeed)
             : 0.0f;
+
+        if (Math.Abs(_loading.fillAmount - 1.0f) < float.Epsilon)
+        {
+            if (_ButtonTextValue == "Start")
+            {
+                SceneManager.LoadScene("JR_DoNotTouch");
+            }
+            else if (_ButtonTextValue == "Quit")
+            {
+                Application.Quit();
+            }
+        }
 
         /*if (Math.Abs(_loading.fillAmount - 1.0f) < float.Epsilon)
             AbilityManager.Instance.TriggerAbility(_ability);
