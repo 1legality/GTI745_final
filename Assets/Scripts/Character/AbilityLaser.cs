@@ -7,6 +7,7 @@ public class AbilityLaser: AbilityBase
     [SerializeField] private ParticleSystem _laserParticle = null;
     [SerializeField] private Transform _fireSocket = null;
     [SerializeField] private float _damagePerSecond = 50.0f;
+    [SerializeField] private AudioSource _audioSource;
 
     public override Abilities Ability => Abilities.Laser;
 
@@ -35,7 +36,10 @@ public class AbilityLaser: AbilityBase
 
             var puzzleElement = hit.collider.GetComponent<PuzzleElement2>();
             if (puzzleElement && !_previousElement)
+            {
                 _previousElement = puzzleElement;
+                _audioSource.Play();
+            }
 
             if (puzzleElement && _previousElement && puzzleElement != _previousElement)
             {
@@ -46,6 +50,11 @@ public class AbilityLaser: AbilityBase
             {
                 _previousElement.UpdateEndLine(hit.point);
             }
+        }
+
+        if (_audioSource.time > 0.5f)
+        {
+            _audioSource.Stop();
         }
 
     }

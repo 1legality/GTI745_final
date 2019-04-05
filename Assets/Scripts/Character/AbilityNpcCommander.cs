@@ -13,6 +13,8 @@ namespace Assets.Scripts.Character
         [SerializeField] private GameObject _fireSocket = null;
         [SerializeField] private float _fillAmountSpeed = 8.0f;
 
+        [SerializeField] private AudioSource _audioSource;
+
         public override Abilities Ability => Abilities.NPC_Commander;
         
         private NPCCommandable _commandInProgress = null;
@@ -43,7 +45,11 @@ namespace Assets.Scripts.Character
                 }
 
                 if (Math.Abs(_progressAmount - 1.0f) < float.Epsilon)
+                {
                     CommandManager.Instance.CompleteProgress(_commandInProgress);
+                    _audioSource.time = 0.5f;
+                    _audioSource.Play();
+                }
             }
         }
     }

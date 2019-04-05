@@ -13,6 +13,9 @@ public class AbilityGun : AbilityBase
     [SerializeField] private float _fireLaunchSpeed = 5.0f;
     [SerializeField] private int _magazineCapacity = 300;
 
+    [SerializeField] private AudioSource _AudioSource;
+    [SerializeField] private AudioClip _AudioClip;
+
     private List<Projectile> _projectiles = new List<Projectile>();
 
     private int _currentIndex = 0;
@@ -21,6 +24,7 @@ public class AbilityGun : AbilityBase
     private void Start()
     {
         InitMagazine();
+        _AudioSource.clip = _AudioClip;
     }
 
     private void Update()
@@ -44,6 +48,8 @@ public class AbilityGun : AbilityBase
     {
         if (Time.time - _lastFireTime < _fireRate)
             return;
+
+        _AudioSource.Play();
 
         var projectile = _projectiles.ElementAt(_currentIndex++);
 

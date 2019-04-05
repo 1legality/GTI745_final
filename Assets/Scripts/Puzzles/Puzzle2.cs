@@ -6,6 +6,7 @@ public class Puzzle2: MonoBehaviour
 {
     [SerializeField] private List<PuzzleElement2> _puzzleElements;
     [SerializeField] private float _wallSpeed = 20.0f;
+    private bool _hasPlaySound;
 
     private void Awake()
     {
@@ -42,7 +43,13 @@ public class Puzzle2: MonoBehaviour
             transform.localPosition = pos;
             yield return null;
         }
-        
-        
+
+        if (_hasPlaySound == false)
+        {
+            GameLoop gameLoop = GameObject.Find("GameLoop").GetComponent<GameLoop>();
+            gameLoop.PlayGoodSound();
+
+            _hasPlaySound = true;
+        }
     }
 }

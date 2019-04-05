@@ -9,6 +9,10 @@ public class GameLoop : MonoBehaviour
     [SerializeField] private Text _GameText;
     [SerializeField] private Text _TimerText;
 
+    [SerializeField] private AudioSource _AudioSource;
+    [SerializeField] private AudioClip _AudioClipGood;
+    [SerializeField] private AudioClip _AudioClipBad;
+
     [SerializeField] private float _TimerLimit;
     private float _CurrentTime;
 
@@ -42,15 +46,27 @@ public class GameLoop : MonoBehaviour
     
     public void OnGameWin()
     {
-        _GameText.text = "You win \n Your time is : " + (_TimerLimit - _CurrentTime) + " seconds";
+        _GameText.text = "You win \n Your time is : " + UnityEngine.Mathf.Round((_TimerLimit - _CurrentTime)) + " seconds";
         _GameText.gameObject.SetActive(true);
         Time.timeScale = 0;
     }
 
-    void GameOver()
+    public void GameOver()
     {
         _GameText.text = "You lose";
         _GameText.gameObject.SetActive(true);
         Time.timeScale = 0;
+    }
+
+    public void PlayGoodSound()
+    {
+        _AudioSource.clip = _AudioClipGood;
+        _AudioSource.Play();
+    }
+
+    public void PlayBasSound()
+    {
+        _AudioSource.clip = _AudioClipBad;
+        _AudioSource.Play();
     }
 }

@@ -12,6 +12,7 @@ public class Puzzle3: MonoBehaviour
 
     private int _targetToExplode = 0;
     private int _targetExploded = 0;
+    private bool _hasPlaySound;
 
     private void Awake()
     {
@@ -39,6 +40,14 @@ public class Puzzle3: MonoBehaviour
             pos.y = Mathf.MoveTowards(pos.y, target, Time.deltaTime * _doorSpeed);
             _door.transform.localPosition = pos;
             yield return null;
+        }
+
+        if (_hasPlaySound == false)
+        {
+            GameLoop gameLoop = GameObject.Find("GameLoop").GetComponent<GameLoop>();
+            gameLoop.PlayGoodSound();
+
+            _hasPlaySound = true;
         }
     }
 }

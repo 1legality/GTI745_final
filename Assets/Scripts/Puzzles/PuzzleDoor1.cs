@@ -11,6 +11,7 @@ public class PuzzleDoor1: MonoBehaviour
 
     private float _yawTarget = -125.0f;
     private bool _openingDoor = false;
+    private bool _hasPlaySound = false;
 
     private void Update()
     {
@@ -29,6 +30,14 @@ public class PuzzleDoor1: MonoBehaviour
             _door.transform.localEulerAngles = localRot;
 
             yield return null;
+        }
+
+        if(_hasPlaySound == false)
+        {
+            GameLoop gameLoop = GameObject.Find("GameLoop").GetComponent<GameLoop>();
+            gameLoop.PlayGoodSound();
+
+            _hasPlaySound = true;
         }
     }
 }
