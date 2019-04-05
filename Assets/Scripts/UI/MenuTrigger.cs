@@ -6,25 +6,27 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Image))]
 public class MenuTrigger : MonoBehaviour
 {
-    [SerializeField] private Abilities _ability = Abilities.None;
     [SerializeField] private float _activationSpeed = 0.5f;
     [SerializeField] private Image _loading = null;
     [SerializeField] private Image _activation = null;
+    [SerializeField] private Text _ButtonText = null;
+    [SerializeField] private String _ButtonTextValue;
     private Image _image;
 
     private void Awake()
     {
-        //_image = GetComponent<Image>();
+        _image = GetComponent<Image>();
     }
 
     private void Start()
     {
-       // AbilityManager.Instance.AbilityChanged += AbilityChanged;
+        // AbilityManager.Instance.AbilityChanged += AbilityChanged;
+        _ButtonText.text = _ButtonTextValue;
     }
 
     private void AbilityChanged(Abilities ability)
     {
-        StartCoroutine(AnimateActivation(ability == _ability ? 1.0f : 0.0f));
+        //StartCoroutine(AnimateActivation(ability == _ability ? 1.0f : 0.0f));
     }
 
     private void Update()
@@ -33,10 +35,10 @@ public class MenuTrigger : MonoBehaviour
             ? Mathf.MoveTowards(_loading.fillAmount, 1.0f, Time.deltaTime * _activationSpeed)
             : 0.0f;
 
-        if (Math.Abs(_loading.fillAmount - 1.0f) < float.Epsilon)
+        /*if (Math.Abs(_loading.fillAmount - 1.0f) < float.Epsilon)
             AbilityManager.Instance.TriggerAbility(_ability);
         else if (AreEyesOver())
-            AbilityManager.Instance.TriggerAbility(Abilities.None);
+            AbilityManager.Instance.TriggerAbility(Abilities.None);*/
     }
 
     private bool AreEyesOver()

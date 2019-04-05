@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 714298625358825652}
   - component: {fileID: 714298625358825651}
   m_Layer: 5
-  m_Name: Gun
+  m_Name: WidgetAbilityTriggerer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58cc7787a72c9f44e868e1ab8d98e412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _ability: 0
   _activationSpeed: 1
   _loading: {fileID: 714298625997942314}
   _activation: {fileID: 714298625358825653}
@@ -332,7 +333,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 0.5
+  m_FillAmount: 0.48
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0

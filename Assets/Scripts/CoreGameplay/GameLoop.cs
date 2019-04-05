@@ -10,7 +10,7 @@ public class GameLoop : MonoBehaviour
     [SerializeField] private Text _TimerText;
 
     [SerializeField] private float _TimerLimit;
-    [SerializeField] private float _CurrentTime;
+    private float _CurrentTime;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +40,7 @@ public class GameLoop : MonoBehaviour
         _TimerText.text = UnityEngine.Mathf.Round(_CurrentTime).ToString();
     }
     
-    public static void OnGameWin()
+    public void OnGameWin()
     {
         _GameText.text = "You win \n Your time is : " + (_TimerLimit - _CurrentTime) + " seconds";
         _GameText.gameObject.SetActive(true);

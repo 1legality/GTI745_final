@@ -18,6 +18,7 @@ public class WinTriggerZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        GameLoop.OnGameWin();
+        GameLoop gameLoop = GameObject.Find("GameLoop").GetComponent<GameLoop>();
+        gameLoop.OnGameWin();
     }
 }
